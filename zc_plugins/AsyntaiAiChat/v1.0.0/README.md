@@ -40,13 +40,6 @@ Open **Modules > Plugin Manager**, click **Asyntai AI Chat**, then click
 **Uninstall**. The four settings, the configuration group and the admin menu
 entry are removed. No store data is touched.
 
-## Privacy
-
-The plugin sends nothing on its own. It writes one `<script>` tag into the page
-head with the Widget ID that you enter. The widget then runs in the visitor
-browser and talks to Asyntai from there. There is no affiliate parameter and no
-tracking of your store.
-
 ## Support
 
-https://asyntai.com/zencart-plugin-documentation or hello@asyntai.com
+https://asyntai.com/documentation/installation/zencart/ or hello@asyntai.com

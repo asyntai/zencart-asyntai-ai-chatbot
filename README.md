@@ -69,27 +69,6 @@ are removed. No store data is touched.
 
 To hide the widget without an uninstall, set **Enable Asyntai AI Chat** to **False**.
 
-## Privacy
-
-The plugin sends nothing on its own. It writes one `<script>` tag with the Widget ID
-that you enter. There is no affiliate parameter, no referral link and no tracking of
-your store.
-
-## File layout
-
-```
-zc_plugins/AsyntaiAiChat/v1.0.0/
-├── manifest.php
-├── README.md
-├── LICENSE.txt
-├── Installer/
-│   └── ScriptedInstaller.php
-├── admin/includes/languages/english/extra_definitions/
-│   └── lang.asyntai_ai_chat_menu.php
-└── catalog/includes/classes/observers/
-    └── auto.asyntai_ai_chat.php
-```
-
 ## Compatibility
 
 | Item | Value |
@@ -101,6 +80,6 @@ zc_plugins/AsyntaiAiChat/v1.0.0/
 
 ## Documentation and support
 
-- Documentation: <https://asyntai.com/zencart-plugin-documentation>
+- Documentation: <https://asyntai.com/documentation/installation/zencart/>
 - Email: hello@asyntai.com
 - Issues: use the [Issues](../../issues) tab of this repository
