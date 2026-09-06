@@ -5,7 +5,7 @@ The widget answers visitor questions about your products, your delivery and your
 returns. When it cannot answer, it collects the question and the visitor email for
 your team.
 
-- Zen Cart 2.1.0 and later
+- Zen Cart 1.5.8 and later
 - Encapsulated plugin. You install it from the Plugin Manager
 - No core file change and no template edit. It uses the `NOTIFY_HTML_HEAD_END` notifier
 - Licence: GPL v2
@@ -73,8 +73,8 @@ To hide the widget without an uninstall, set **Enable Asyntai AI Chat** to **Fal
 
 | Item | Value |
 | --- | --- |
-| Zen Cart | 2.1.0, 2.2.0, 2.2.1, 2.2.2 |
-| PHP | 8.2 or higher |
+| Zen Cart | 1.5.8, 2.0.0, 2.1.0, 2.2.0, 2.2.1, 2.2.2 |
+| PHP | 7.3 or higher |
 | Plugin type | Encapsulated plugin |
 | Licence | GPL v2 |
 

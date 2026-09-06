@@ -4,7 +4,7 @@ Adds the Asyntai AI chat widget to your Zen Cart storefront. The widget answers
 visitor questions about your products, your delivery and your returns. When it
 cannot answer, it collects the question and the visitor email for your team.
 
-- Zen Cart v2.1.0 and later (encapsulated plugin, installed from Plugin Manager)
+- Zen Cart v1.5.8 and later (encapsulated plugin, installed from Plugin Manager)
 - No template edit. The widget loads from the `NOTIFY_HTML_HEAD_END` notifier
 - No core file is changed
 - Licence: GPL v2

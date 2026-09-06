@@ -21,19 +21,19 @@ class zcObserverAsyntaiAiChat extends base
     /**
      * The widget ID, already checked. Empty when the widget must not load.
      */
-    protected string $widgetId = '';
+    protected $widgetId = '';
 
     /**
      * The script URL, already checked.
      */
-    protected string $scriptUrl = '';
+    protected $scriptUrl = '';
 
     /**
      * Page names on which the widget must not load.
      *
      * @var string[]
      */
-    protected array $excludedPages = [];
+    protected $excludedPages = [];
 
     public function __construct()
     {
