@@ -12,28 +12,50 @@ your team.
 
 ## What you need
 
-An Asyntai account and a Widget ID. Create one at <https://asyntai.com/>. The free
-plan is enough to run the plugin.
+An Asyntai account. You can create a free one during the connect step.
 
 ## Install
 
 1. Download the latest ZIP from [Releases](../../releases), or download this
    repository as a ZIP.
 2. Copy the `zc_plugins` folder into your Zen Cart root, next to `index.php`. You
-   get `zc_plugins/AsyntaiAiChat/v1.0.0/`.
+   get `zc_plugins/AsyntaiAiChat/v1.1.0/`.
 3. In the admin, open **Modules > Plugin Manager**.
 4. Click **Asyntai AI Chat**, then click **Install**.
-5. Open **Configuration > Asyntai AI Chat**.
-6. Paste your Widget ID.
-7. Set **Enable Asyntai AI Chat** to **True**, then click **Save All Changes**.
-8. Open your storefront. The chat button is in the bottom corner.
+5. Open **Tools > Asyntai AI Chat** and click **Connect to Asyntai**.
+6. Sign in or create a free Asyntai account in the window that opens. The plugin
+   fills in your Widget ID and switches the widget on.
+7. Open your storefront. The chat button is in the bottom corner.
+
+### Upgrade from v1.0.0
+
+Copy the `v1.1.0` folder next to `v1.0.0`, then click **Upgrade Available** in
+**Modules > Plugin Manager**. Your settings and your Widget ID stay as they are.
+
+## Let the chatbot read this shop (optional)
+
+In **Tools > Asyntai AI Chat**, tick **Let the chatbot read this shop**. Asyntai
+then reads your enabled products (price, offer price, stock, brand, category,
+image), categories, EZ-Pages and information pages (shipping, privacy,
+conditions, about us, contact) directly from your shop, so the chatbot's answers
+stay up to date. Only what a visitor can already see is shared.
+
+- Asyntai reads `index.php?main_page=index&asyntai_feed=products` (and `=pages`).
+  Each request must carry an HMAC-SHA256 signature made with a secret that only
+  your shop and Asyntai know, and a timestamp no older than 5 minutes. Anything
+  else gets HTTP 403.
+- The secret lives in the plugin's own table (`asyntai_ai_chat_state`), never in
+  a page or a configuration value.
+- Your shop server never contacts Asyntai. When you click **Connect**, your own
+  browser sends the connection request and opens the sign-in window.
+- Untick the box, or click **Disconnect**, and the address answers 403 at once.
 
 ## Settings
 
 | Setting | What it does |
 | --- | --- |
 | Enable Asyntai AI Chat | Shows or hides the widget. Default `False`. |
-| Widget ID | Your own Asyntai Widget ID, for example `asyntai_1a2b3c4d5e6f`. Nothing loads without it. |
+| Widget ID | Your Asyntai Widget ID, for example `asyntai_1a2b3c4d5e6f`. **Connect** fills it in, or paste it yourself. Nothing loads without it. |
 | Widget script URL | The address of the widget script. Change it only if you host the script yourself. It must start with `https://` and end with `.js`. |
 | Pages without the widget | Page names, separated by commas, where the widget must not load. Default: the checkout pages. |
 
@@ -64,8 +86,8 @@ If any check fails, nothing is written.
 ## Uninstall
 
 Open **Modules > Plugin Manager**, click **Asyntai AI Chat**, then click
-**Un-Install**. The four settings, the configuration group and the admin menu entry
-are removed. No store data is touched.
+**Un-Install**. The settings, the configuration group, both admin menu entries and
+the plugin's table are removed. No store data is touched.
 
 To hide the widget without an uninstall, set **Enable Asyntai AI Chat** to **False**.
 

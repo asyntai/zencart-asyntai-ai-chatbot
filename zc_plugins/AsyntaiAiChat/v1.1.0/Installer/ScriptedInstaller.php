@@ -2,9 +2,10 @@
 /**
  * Asyntai AI Chat - install and uninstall.
  *
- * The install adds one configuration group with four settings, and one entry
- * in the admin Configuration menu. The uninstall removes both. No store data
- * is touched, and no request leaves the store.
+ * The install adds one configuration group with four settings, an entry in
+ * the admin Configuration menu, the "Asyntai AI Chat" page under Tools, and
+ * one small table for the plugin's private state. The uninstall removes all
+ * of them. No store data is touched, and no request leaves the store.
  *
  * Only plain SQL and the two admin-page functions are used here, so the same
  * installer runs on Zen Cart 1.5.8 and on 2.x. The configuration helper
@@ -72,12 +73,50 @@ class ScriptedInstaller extends ScriptedInstallBase
             'Y'
         );
 
+        return $this->addConnectPage();
+    }
+
+    /**
+     * From 1.0.0: keeps the four settings and their values, and adds the
+     * private state table and the "Connect" page under Tools.
+     *
+     * Zen Cart 1.5.8 calls this without an argument, 2.x with the old version.
+     */
+    protected function executeUpgrade($oldVersion = null)
+    {
+        if ($this->getOrCreateGroupId() === 0) {
+            return false;
+        }
+        return $this->addConnectPage();
+    }
+
+    protected function addConnectPage()
+    {
+        $this->executeInstallerSql(
+            "CREATE TABLE IF NOT EXISTS " . DB_PREFIX . "asyntai_ai_chat_state (
+                state_key VARCHAR(64) NOT NULL,
+                state_value TEXT NOT NULL,
+                PRIMARY KEY (state_key)
+            )"
+        );
+
+        zen_deregister_admin_pages(['toolsAsyntaiAiChat']);
+        zen_register_admin_page(
+            'toolsAsyntaiAiChat',
+            'BOX_TOOLS_ASYNTAI_AI_CHAT',
+            'FILENAME_ASYNTAI_AI_CHAT',
+            '',
+            'tools',
+            'Y'
+        );
+
         return true;
     }
 
     protected function executeUninstall()
     {
-        zen_deregister_admin_pages(['configAsyntaiAiChat']);
+        zen_deregister_admin_pages(['configAsyntaiAiChat', 'toolsAsyntaiAiChat']);
+        $this->executeInstallerSql("DROP TABLE IF EXISTS " . DB_PREFIX . "asyntai_ai_chat_state");
 
         $keys = "'" . implode("', '", $this->configKeys) . "'";
         $this->executeInstallerSql(

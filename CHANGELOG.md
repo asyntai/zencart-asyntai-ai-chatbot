@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.1.0
+
+- New page **Tools > Asyntai AI Chat**: connect the shop to your Asyntai
+  account with one click. The Widget ID is filled in for you.
+- The chatbot can now read your enabled products, categories, EZ-Pages and
+  information pages directly from your shop, so its answers stay up to date
+  (optional, switch it off at any time).
+- Improvements to the plugin settings screen.
+- Tested on Zen Cart 1.5.8a, 2.1.0 and 2.2.2.
+
+Upgrade: copy the new `zc_plugins/AsyntaiAiChat/v1.1.0/` folder to your store,
+then click **Upgrade Available** in **Modules > Plugin Manager**. Your settings
+and your Widget ID stay as they are.
+
 ## v1.0.0
 
 First release.
